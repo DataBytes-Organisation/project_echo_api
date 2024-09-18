@@ -3,8 +3,8 @@ version: "3.9"
 services:
   echo_api:
     build:
-      context: ./  # The Dockerfile is in the root of the new repo
-      dockerfile: API.Dockerfile  # Make sure this matches the correct Dockerfile name
+      context: ./ 
+      dockerfile: API.Dockerfile 
     image: ts-api
     container_name: ts-api
     networks:
@@ -13,8 +13,8 @@ services:
       - "9000:9000"
       - "9080:9080"
     volumes:
-      - ./:/app  # Mount the root folder (containing 'app') to /app in the container
-      - credentials_volume:/root/.config/gcloud/  # For Google Cloud credentials
+      - ./:/app 
+      - credentials_volume:/root/.config/gcloud/ 
     stdin_open: false
     tty: true
     command: uvicorn app.main:app --host 0.0.0.0 --port 9000 --reload
